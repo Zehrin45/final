@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✿ Vesper - Safety Charm ✿</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Quicksand:wght@500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            image-rendering: pixelated;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #e6d5f0 0%, #f0e6f7 50%, #f5f0fa 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating lilies background */
+        .lily {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .lily:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .lily:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .lily:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .lily:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 1.5s; }
+        .lily:nth-child(5) { top: 50%; left: 5%; animation-delay: 0.5s; }
+        .lily:nth-child(6) { top: 60%; right: 8%; animation-delay: 2.5s; }
+
+        .phone-frame {
+            max-width: 420px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #faf8fc 0%, #f5f2fa 50%, #f8f3fc 100%);
+            border-radius: 60px;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(155, 89, 182, 0.3), 0 20px 40px rgba(100, 30, 150, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 15px solid #9b59b6;
+            min-height: 750px;
+            position: relative;
+            z-index: 1;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(186, 85, 211, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(186, 85, 211, 0.08) 0%, transparent 50%);
+            animation: phoneOpen 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .pixel-border-top {
+            height: 12px;
+            background: repeating-linear-gradient(
+                90deg,
+                #9b59b6 0px,
+                #9b59b6 10px,
+                #b366cc 10px,
+                #b366cc 20px
+            );
+        }
+
+        .screen {
+            padding: 30px;
+            padding-top: 25px;
+            min-height: 700px;
+            background: url('data:image/svg+xml,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="%239b59b6" opacity="0.1"/></svg>') repeat;
+            animation: fadeIn 0.4s ease-out, screenFadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.95; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            padding: 20px 0;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.06) 0%, rgba(179, 102, 204, 0.04) 100%);
+            border-radius: 25px;
+            border: 2px solid rgba(179, 102, 204, 0.2);
+            animation: headerGlow 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+        }
+
+        .bunny-decoration {
+            font-size: 24px;
+            display: inline-block;
+            animation: hop 1s ease-in-out infinite;
+        }
+
+        @keyframes hop {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .logo {
+            font-size: 28px;
+            font-family: 'DotGothic16', sans-serif;
+            color: #9b59b6;
+            margin: 10px 0;
+            text-shadow: 3px 3px 0px #d9a5d9;
+            letter-spacing: 3px;
+        }
+
+        .tagline {
+            font-size: 13px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            color: #8b5a7d;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        .lily-divider {
+            font-size: 16px;
+            margin: 10px 0;
+            letter-spacing: 5px;
+        }
+
+        .status-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 30px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 20px 50px rgba(155, 89, 182, 0.15), 0 8px 20px rgba(155, 89, 182, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(179, 102, 204, 0.3);
+            position: relative;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            animation: cardSlideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+        }
+
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 143, 184, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .status-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(179, 102, 204, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .status-card::before {
+            content: '🐰';
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            font-size: 24px;
+            background: white;
+            padding: 0 8px;
+            border-radius: 50%;
+        }
+
+        .status-card::after {
+            content: '🌸';
+            position: absolute;
+            top: -15px;
+            right: 15px;
+            font-size: 24px;
+            background: white;
+            padding: 0 8px;
+            border-radius: 50%;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            gap: 8px;
+        }
+
+        .pixel-heart {
+            font-size: 16px;
+            color: #ff6b9d;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: #8b5a7d;
+            margin-top: 5px;
+        }
+
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+            display: inline-block;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .status-square {
+            width: 20px;
+            height: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fb8 100%);
+            box-shadow: 0 0 15px rgba(255, 107, 157, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            animation: statusPulseDisconnected 2s ease-in-out infinite;
+        }
+
+        .status-square.connected {
+            background: linear-gradient(135deg, #a8e6cf 0%, #81d4a4 100%);
+            box-shadow: 0 0 20px rgba(168, 230, 207, 0.6), 0 0 40px rgba(129, 212, 164, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            animation: statusPulseConnected 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulseDisconnected {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(255, 107, 157, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+            50% { 
+                transform: scale(0.95);
+                box-shadow: 0 0 8px rgba(255, 107, 157, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        @keyframes statusPulseConnected {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(168, 230, 207, 0.6), 0 0 40px rgba(129, 212, 164, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(168, 230, 207, 0.8), 0 0 60px rgba(129, 212, 164, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        .connect-button {
+            width: 100%;
+            padding: 16px;
+            border: 3px solid #9b59b6;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            position: relative;
+            box-shadow: 0 6px 15px rgba(155, 89, 182, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+            animation: buttonPulse 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
+        }
+
+        .connect-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(155, 89, 182, 0.4), 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .connect-button:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 6px rgba(255, 143, 184, 0.3);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 25px;
+            animation: cardSlideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+        }
+
+        .menu-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 25px 18px;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 15px 40px rgba(155, 89, 182, 0.15), 0 5px 15px rgba(155, 89, 182, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(179, 102, 204, 0.25);
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            animation: buttonPulse 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(179, 102, 204, 0.05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(155, 89, 182, 0.25), 0 10px 25px rgba(155, 89, 182, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .menu-card:hover::before {
+            opacity: 1;
+        }
+
+        .menu-card.emergency {
+            background: linear-gradient(135deg, #ff8fb8 0%, #ff6b9d 100%);
+            color: white;
+            border-color: #ff6b9d;
+            animation: glow 2s ease-in-out infinite;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3), 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(255, 107, 157, 0.6); }
+        }
+
+        .menu-card.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .menu-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .menu-title {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .menu-subtitle {
+            font-size: 11px;
+            color: #9b59b6;
+            margin-top: 5px;
+        }
+
+        .emergency .menu-subtitle {
+            color: #ffd6e8;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f0e6f7 0%, #e6d5f0 50%, #f3eaf8 100%);
+            padding: 22px;
+            border-radius: 20px;
+            border: 3px dashed rgba(179, 102, 204, 0.5);
+            position: relative;
+            box-shadow: 0 12px 35px rgba(155, 89, 182, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            animation: cardSlideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
+        }
+
+        .info-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(179, 102, 204, 0.03) 2px,
+                    rgba(179, 102, 204, 0.03) 4px
+                );
+            pointer-events: none;
+        }
+
+        .info-box::before {
+            content: '🌷';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff0f7;
+            padding: 0 10px;
+            font-size: 20px;
+        }
+
+        .info-text {
+            font-size: 11px;
+            color: #8b5a7d;
+            line-height: 1.8;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .back-button {
+            color: #9b59b6;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 10px 15px;
+            border: 2px solid #9b59b6;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .back-button:hover {
+            background: #9b59b6;
+            color: white;
+            transform: translateX(-4px);
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.25);
+        }
+
+        .screen-title {
+            font-size: 20px;
+            font-family: 'DotGothic16', sans-serif;
+            color: #9b59b6;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #d9a5d9;
+        }
+
+        .input-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 28px;
+            border-radius: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 20px 50px rgba(155, 89, 182, 0.12), 0 8px 20px rgba(155, 89, 182, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(179, 102, 204, 0.25);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .input-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(180deg, rgba(179, 102, 204, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #8b5a7d;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(179, 102, 204, 0.3);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            color: #8b5a7d;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.08), inset 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        input::placeholder {
+            color: #9b59b6;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #9b59b6;
+            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.02);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .add-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff8fb8 0%, #ffb3d9 50%, #ffb3d9 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            box-shadow: 0 12px 30px rgba(255, 143, 184, 0.3), 0 4px 10px rgba(255, 143, 184, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .add-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(255, 143, 184, 0.4), 0 6px 15px rgba(255, 143, 184, 0.25);
+        }
+
+        .add-button:hover::before {
+            opacity: 1;
+        }
+
+        .add-button:active {
+            transform: translateY(0px);
+            box-shadow: 0 4px 12px rgba(255, 143, 184, 0.3);
+        }
+
+        .contacts-list {
+            margin-bottom: 20px;
+        }
+
+        .list-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #8b5a7d;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(155, 89, 182, 0.1), 0 3px 10px rgba(155, 89, 182, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(230, 213, 240, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #ff8fb8 0%, #ffb3d9 100%);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(155, 89, 182, 0.15), 0 5px 15px rgba(155, 89, 182, 0.1);
+        }
+
+        .contact-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #8b5a7d;
+            margin-bottom: 5px;
+        }
+
+        .contact-phone {
+            font-size: 12px;
+            color: #c49ac4;
+            margin-bottom: 3px;
+        }
+
+        .contact-relationship {
+            font-size: 11px;
+            color: #d4a5c4;
+        }
+
+        .remove-button {
+            background: linear-gradient(135deg, #ff8fb8 0%, #ffb3d9 100%);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(255, 143, 184, 0.25), 0 2px 6px rgba(255, 143, 184, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .remove-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .remove-button:hover {
+            background: linear-gradient(135deg, #ffb3d9 0%, #ffc0e0 100%);
+            transform: scale(1.1);
+            box-shadow: 0 10px 24px rgba(255, 143, 184, 0.35), 0 4px 10px rgba(255, 143, 184, 0.2);
+        }
+
+        .remove-button:hover::before {
+            opacity: 1;
+        }
+
+        .empty-state {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            border: 3px dashed rgba(179, 102, 204, 0.4);
+            box-shadow: 0 12px 35px rgba(155, 89, 182, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .empty-state::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(179, 102, 204, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 143, 184, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .empty-text {
+            font-size: 12px;
+            color: #c49ac4;
+            line-height: 1.8;
+        }
+
+        .setting-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 10px 28px rgba(155, 89, 182, 0.1), 0 4px 12px rgba(155, 89, 182, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(230, 213, 240, 0.5);
+            border-left: 5px solid #ff8fb8;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .setting-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(179, 102, 204, 0.02) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .setting-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 14px 36px rgba(155, 89, 182, 0.15), 0 6px 16px rgba(155, 89, 182, 0.1);
+        }
+
+        .setting-card:hover::before {
+            opacity: 1;
+        }
+
+        .setting-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #8b5a7d;
+            margin-bottom: 8px;
+        }
+
+        .setting-desc {
+            font-size: 11px;
+            color: #c49ac4;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .scroll-container {
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scroll-container::-webkit-scrollbar-track {
+            background: #e6d5f0;
+            border-radius: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #9b59b6;
+            border-radius: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #8e44ad;
+        }
+
+        .pixel-sparkle {
+            font-size: 12px;
+            color: #b366cc;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        @keyframes phoneOpen {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+                filter: blur(10px);
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes screenFadeIn {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes cardSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes headerGlow {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes buttonPulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatingParticle {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) translateX(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) translateX(var(--tx, 0));
+            }
+        }
+
+        .bunny-corner {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.6;
+        }
+
+        .bunny-tl { top: 10px; left: 10px; }
+        .bunny-tr { top: 10px; right: 10px; }
+        .bunny-bl { bottom: 10px; left: 10px; }
+        .bunny-br { bottom: 10px; right: 10px; }
+
+        /* Feedback section styles */
+        .rating-section {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .rating-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #8b5a7d;
+            margin-bottom: 10px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .star {
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: grayscale(100%) opacity(0.5);
+            transform: scale(1);
+        }
+
+        .star:hover {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.15);
+        }
+
+        .star.active {
+            filter: grayscale(0%) opacity(1);
+            animation: starPop 0.4s ease;
+        }
+
+        @keyframes starPop {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1.1); }
+        }
+
+        .review-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(179, 102, 204, 0.3);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            color: #8b5a7d;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 85px;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.08), inset 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .review-textarea::placeholder {
+            color: #9b59b6;
+        }
+
+        .review-textarea:focus {
+            outline: none;
+            border-color: #9b59b6;
+            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.02);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .reviews-list {
+            margin-bottom: 20px;
+        }
+
+        .review-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 18px;
+            border-radius: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 10px 28px rgba(155, 89, 182, 0.1), 0 4px 12px rgba(155, 89, 182, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(230, 213, 240, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 143, 184, 0.5), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(155, 89, 182, 0.15), 0 6px 16px rgba(155, 89, 182, 0.1);
+        }
+
+        .review-card:hover::before {
+            left: 100%;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .review-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #8b5a7d;
+        }
+
+        .review-rating {
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 12px;
+            color: #8b5a7d;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .review-date {
+            font-size: 10px;
+            color: #c49ac4;
+        }
+
+        /* LOGIN/SIGNUP SCREEN */
+        .auth-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 700px;
+            padding: 40px 20px;
+        }
+
+        .auth-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(155, 89, 182, 0.2), 0 8px 20px rgba(155, 89, 182, 0.1);
+            border: 2px solid rgba(179, 102, 204, 0.3);
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-title {
+            font-family: 'DotGothic16', cursive;
+            font-size: 24px;
+            color: #9b59b6;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .auth-subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #9b59b6;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .auth-input {
+            padding: 14px 16px;
+            border: 2px solid rgba(179, 102, 204, 0.3);
+            border-radius: 14px;
+            font-size: 13px;
+            background: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            color: #8b5a7d;
+            transition: all 0.3s ease;
+        }
+
+        .auth-input::placeholder {
+            color: #c49ac4;
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: #9b59b6;
+            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.02);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .auth-button {
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Quicksand', sans-serif;
+            box-shadow: 0 8px 16px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(155, 89, 182, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-toggle {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #8b5a7d;
+        }
+
+        .auth-toggle-link {
+            color: #9b59b6;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .auth-toggle-link:hover {
+            color: #ff8fb8;
+        }
+
+        .hidden-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating lilies background -->
+    <div class="lily">🌸</div>
+    <div class="lily">🌷</div>
+    <div class="lily">🌸</div>
+    <div class="lily">🌷</div>
+    <div class="lily">🌸</div>
+    <div class="lily">🌷</div>
+
+    <div class="phone-frame">
+        <div class="pixel-border-top"></div>
+        <div class="screen">
+            <!-- LOGIN SCREEN -->
+            <div id="loginScreen">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <div class="auth-title">~ VESPER ~</div>
+                        <div class="auth-subtitle">🌸 your guardian angel 🌸</div>
+
+                        <!-- LOGIN FORM -->
+                        <div id="loginForm">
+                            <div class="auth-form">
+                                <input type="text" class="auth-input" id="loginUsername" placeholder="username" onkeypress="handleAuthKeypress(event)">
+                                <input type="password" class="auth-input" id="loginPassword" placeholder="password" onkeypress="handleAuthKeypress(event)">
+                                <button class="auth-button" onclick="handleLogin()">log in</button>
+                            </div>
+                            <div class="auth-toggle">
+                                don't have an account?<br>
+                                <span class="auth-toggle-link" onclick="toggleAuthForm()">sign up here</span>
+                            </div>
+                        </div>
+
+                        <!-- SIGNUP FORM -->
+                        <div id="signupForm" class="hidden-form">
+                            <div class="auth-form">
+                                <input type="text" class="auth-input" id="signupUsername" placeholder="choose username" onkeypress="handleAuthKeypress(event)">
+                                <input type="password" class="auth-input" id="signupPassword" placeholder="create password" onkeypress="handleAuthKeypress(event)">
+                                <input type="password" class="auth-input" id="signupConfirm" placeholder="confirm password" onkeypress="handleAuthKeypress(event)">
+                                <button class="auth-button" onclick="handleSignup()">create account</button>
+                            </div>
+                            <div class="auth-toggle">
+                                already have an account?<br>
+                                <span class="auth-toggle-link" onclick="toggleAuthForm()">log in here</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOME SCREEN -->
+            <div id="homeScreen">
+                <div class="header">
+                    <div class="bunny-decoration">🐰</div>
+                    <div class="lily-divider">🌷 🌸 🌷</div>
+                    <div class="logo">~ VESPER ~</div>
+                    <div class="tagline">&lt;3 your guardian angel &lt;3</div>
+                    <div class="lily-divider">🌸 🌷 🌸</div>
+                    <div class="bunny-decoration">🐰</div>
+                </div>
+
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <span class="pixel-heart">❤</span>
+                        <div class="status-square" id="statusSquare"></div>
+                        <span class="pixel-heart">❤</span>
+                    </div>
+                    <div class="status-text" id="statusText">not connected</div>
+                    <br>
+                    <button class="connect-button" id="connectButton" onclick="toggleConnection()">
+                        [>] connect charm [&lt;]
+                    </button>
+                </div>
+
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showScreen('contacts')">
+                        <div class="menu-icon">🐰</div>
+                        <div class="menu-title">contacts</div>
+                        <div class="menu-subtitle"><span id="contactCount">0</span>/5 friends</div>
+                    </div>
+
+                    <div class="menu-card emergency" id="emergencyCard" onclick="simulateEmergency()">
+                        <div class="menu-icon">⚠️</div>
+                        <div class="menu-title">!! SOS !!</div>
+                        <div class="menu-subtitle">emergency</div>
+                    </div>
+
+                    <div class="menu-card" onclick="showScreen('settings')">
+                        <div class="menu-icon">⚙️</div>
+                        <div class="menu-title">settings</div>
+                        <div class="menu-subtitle">options</div>
+                    </div>
+
+                    <div class="menu-card" onclick="showLocationInfo()">
+                        <div class="menu-icon">📍</div>
+                        <div class="menu-title">location</div>
+                        <div class="menu-subtitle">gps active</div>
+                    </div>
+
+                    <div class="menu-card" onclick="showScreen('feedback')">
+                        <div class="menu-icon">💬</div>
+                        <div class="menu-title">reviews</div>
+                        <div class="menu-subtitle">feedback</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-text" id="statusInfo">
+                        <span class="pixel-sparkle">*</span> your charm is waiting <span class="pixel-sparkle">*</span><br>
+                        press to alert loved ones &lt;3
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 15px; font-size: 16px;">
+                    🌸 🐰 🌷 🐰 🌸
+                </div>
+            </div>
+
+            <!-- CONTACTS SCREEN -->
+            <div id="contactsScreen" class="hidden">
+                <div class="header">
+                    <div class="back-button" onclick="showScreen('home')">[&lt;] back</div>
+                    <div class="lily-divider">🌷 🌸 🌷</div>
+                    <div class="screen-title">&lt;3 contacts &lt;3</div>
+                    <div class="lily-divider">🌸 🌷 🌸</div>
+                </div>
+
+                <div class="scroll-container">
+                    <div class="input-card">
+                        <div class="card-title">* add friend *</div>
+                        <input type="text" id="contactName" placeholder="name">
+                        <input type="tel" id="contactPhone" placeholder="phone #">
+                        <input type="text" id="contactRelationship" placeholder="relationship">
+                        <button class="add-button" onclick="addContact()">[+] add [+]</button>
+                    </div>
+
+                    <div class="contacts-list">
+                        <div class="list-title">~ friends (<span id="contactListCount">0</span>/5) ~</div>
+                        <div id="contactsList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS SCREEN -->
+            <div id="settingsScreen" class="hidden">
+                <div class="header">
+                    <div class="back-button" onclick="showScreen('home')">[&lt;] back</div>
+                    <div class="lily-divider">🌷 🌸 🌷</div>
+                    <div class="screen-title">~ settings ~</div>
+                    <div class="lily-divider">🌸 🌷 🌸</div>
+                </div>
+
+                <div class="scroll-container">
+                    <div class="setting-card">
+                        <div class="setting-title">🔔 notifications</div>
+                        <div class="setting-desc">receive alerts &lt;3</div>
+                    </div>
+
+                    <div class="setting-card">
+                        <div class="setting-title">📍 location</div>
+                        <div class="setting-desc">share gps position</div>
+                    </div>
+
+                    <div class="setting-card">
+                        <div class="setting-title">📞 calls</div>
+                        <div class="setting-desc">auto-call contacts</div>
+                    </div>
+
+                    <div class="setting-card">
+                        <div class="setting-title">🎥 recording</div>
+                        <div class="setting-desc">auto-record emergencies</div>
+                    </div>
+
+                    <div class="setting-card">
+                        <div class="setting-title">🔋 battery</div>
+                        <div class="setting-desc">charm: 87% +++</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 15px; font-size: 16px;">
+                    🐰 🌷 🐰
+                </div>
+            </div>
+
+            <!-- FEEDBACK SCREEN -->
+            <div id="feedbackScreen" class="hidden">
+                <div class="header">
+                    <div class="back-button" onclick="showScreen('home')">[&lt;] back</div>
+                    <div class="lily-divider">🌷 🌸 🌷</div>
+                    <div class="screen-title">💬 reviews 💬</div>
+                    <div class="lily-divider">🌸 🌷 🌸</div>
+                </div>
+
+                <div class="scroll-container">
+                    <div class="input-card">
+                        <div class="card-title">* share your love *</div>
+                        <input type="text" id="reviewName" placeholder="your name">
+                        <div class="rating-section">
+                            <div class="rating-label">how cute is vesper?</div>
+                            <div class="star-rating" id="starRating">
+                                <span class="star" onclick="setRating(1)" data-rating="1">⭐</span>
+                                <span class="star" onclick="setRating(2)" data-rating="2">⭐</span>
+                                <span class="star" onclick="setRating(3)" data-rating="3">⭐</span>
+                                <span class="star" onclick="setRating(4)" data-rating="4">⭐</span>
+                                <span class="star" onclick="setRating(5)" data-rating="5">⭐</span>
+                            </div>
+                        </div>
+                        <textarea id="reviewText" placeholder="tell us what you think! &lt;3" class="review-textarea"></textarea>
+                        <button class="add-button" onclick="addReview()">[+] submit [+]</button>
+                    </div>
+
+                    <div class="reviews-list">
+                        <div class="list-title">~ all reviews (~<span id="reviewCount">0</span>~) ~</div>
+                        <div id="reviewsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App State
+        let isConnected = false;
+        let emergencyContacts = [];
+        let reviews = [];
+        let currentScreen = 'home';
+        let currentRating = 0;
+
+        // Load reviews
+        function loadReviews() {
+            const stored = localStorage.getItem('vesperReviews');
+            if (stored) {
+                reviews = JSON.parse(stored);
+                updateReviewsList();
+            }
+        }
+
+        function saveReviews() {
+            localStorage.setItem('vesperReviews', JSON.stringify(reviews));
+            updateReviewsList();
+        }
+
+        function setRating(rating) {
+            currentRating = rating;
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function addReview() {
+            const name = document.getElementById('reviewName').value.trim();
+            const text = document.getElementById('reviewText').value.trim();
+
+            if (!name || !text || currentRating === 0) {
+                alert('Error!\n\nPlease fill all fields & give stars <3');
+                return;
+            }
+
+            reviews.unshift({
+                id: Date.now(),
+                name: name,
+                rating: currentRating,
+                text: text,
+                date: new Date().toLocaleDateString()
+            });
+
+            saveReviews();
+            document.getElementById('reviewName').value = '';
+            document.getElementById('reviewText').value = '';
+            currentRating = 0;
+            document.querySelectorAll('.star').forEach(star => star.classList.remove('active'));
+            alert('Thank you! <3\n\n' + name + ' your review means so much! ✿');
+        }
+
+        function updateReviewsList() {
+            const reviewsList = document.getElementById('reviewsList');
+            const reviewCount = document.getElementById('reviewCount');
+
+            reviewCount.textContent = reviews.length;
+
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 24px; margin-bottom: 10px;">💬</div>
+                        <div class="empty-text">
+                            no reviews yet ~<br>be the first to share! <3
+                        </div>
+                    </div>
+                `;
+            } else {
+                reviewsList.innerHTML = reviews.map(review => `
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-name">🌸 ${review.name}</div>
+                            <div class="review-rating">${'⭐'.repeat(review.rating)}</div>
+                        </div>
+                        <div class="review-text">"${review.text}"</div>
+                        <div class="review-date">${review.date}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Load contacts
+        function loadContacts() {
+            const stored = localStorage.getItem('vesperContacts');
+            if (stored) {
+                emergencyContacts = JSON.parse(stored);
+                updateContactsList();
+            }
+        }
+
+        function saveContacts() {
+            localStorage.setItem('vesperContacts', JSON.stringify(emergencyContacts));
+            updateContactsList();
+        }
+
+        function toggleConnection() {
+            isConnected = !isConnected;
+            const statusSquare = document.getElementById('statusSquare');
+            const statusText = document.getElementById('statusText');
+            const connectButton = document.getElementById('connectButton');
+            const statusInfo = document.getElementById('statusInfo');
+            const emergencyCard = document.getElementById('emergencyCard');
+
+            if (isConnected) {
+                statusSquare.classList.add('connected');
+                statusText.textContent = 'connected! <3';
+                connectButton.textContent = '[x] disconnect [x]';
+                connectButton.style.background = 'linear-gradient(135deg, #ff8fb8 0%, #ffb3d9 100%)';
+                statusInfo.innerHTML = '<span class="pixel-sparkle">*</span> charm is ready! <span class="pixel-sparkle">*</span><br>press to alert loved ones &lt;3';
+                if (emergencyContacts.length > 0) {
+                    emergencyCard.classList.remove('disabled');
+                }
+                alert('✿ Connected! ✿\n\n<3 Your Vesper charm is protecting you! <3');
+            } else {
+                statusSquare.classList.remove('connected');
+                statusText.textContent = 'not connected';
+                connectButton.textContent = '[>] connect charm [<]';
+                connectButton.style.background = 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)';
+                statusInfo.innerHTML = '<span class="pixel-sparkle">*</span> your charm is waiting <span class="pixel-sparkle">*</span><br>press to alert loved ones &lt;3';
+                emergencyCard.classList.add('disabled');
+                alert('Disconnected\n\nYour charm is off ~');
+            }
+        }
+
+        function addContact() {
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const relationship = document.getElementById('contactRelationship').value.trim();
+
+            if (!name || !phone) {
+                alert('Error!\n\nPlease add name and phone <3');
+                return;
+            }
+
+            if (emergencyContacts.length >= 5) {
+                alert('Limit Reached!\n\nMax 5 friends ~');
+                return;
+            }
+
+            emergencyContacts.push({
+                id: Date.now(),
+                name: name,
+                phone: phone,
+                relationship: relationship
+            });
+
+            saveContacts();
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactPhone').value = '';
+            document.getElementById('contactRelationship').value = '';
+            alert('Success!\n\n' + name + ' added! <3');
+        }
+
+        function removeContact(id) {
+            if (confirm('Remove friend?\n\nAre you sure?')) {
+                emergencyContacts = emergencyContacts.filter(c => c.id !== id);
+                saveContacts();
+            }
+        }
+
+        function updateContactsList() {
+            const contactsList = document.getElementById('contactsList');
+            const contactCount = document.getElementById('contactCount');
+            const contactListCount = document.getElementById('contactListCount');
+
+            contactCount.textContent = emergencyContacts.length;
+            contactListCount.textContent = emergencyContacts.length;
+
+            if (emergencyContacts.length === 0) {
+                contactsList.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 24px; margin-bottom: 10px;">🐰</div>
+                        <div class="empty-text">
+                            no friends yet ~<br>add someone you trust &lt;3
+                        </div>
+                    </div>
+                `;
+            } else {
+                contactsList.innerHTML = emergencyContacts.map(contact => `
+                    <div class="contact-card">
+                        <div class="contact-info">
+                            <div class="contact-name">🌸 ${contact.name}</div>
+                            <div class="contact-phone">📞 ${contact.phone}</div>
+                            ${contact.relationship ? `<div class="contact-relationship">~ ${contact.relationship}</div>` : ''}
+                        </div>
+                        <button class="remove-button" onclick="removeContact(${contact.id})">[x]</button>
+                    </div>
+                `).join('');
+            }
+
+            const emergencyCard = document.getElementById('emergencyCard');
+            if (isConnected && emergencyContacts.length > 0) {
+                emergencyCard.classList.remove('disabled');
+            } else {
+                emergencyCard.classList.add('disabled');
+            }
+        }
+
+        function simulateEmergency() {
+            if (!isConnected) {
+                alert('Not Connected!\n\nConnect your charm first ~');
+                return;
+            }
+
+            if (emergencyContacts.length === 0) {
+                alert('No Contacts!\n\nAdd a friend first <3');
+                return;
+            }
+
+            if (confirm('!! EMERGENCY !!\n\n* alert everyone? *\n\n<3 call contacts\n[!] alert police\n[x] share location\n\nactivate?')) {
+                const contactList = emergencyContacts.map(c => `🌸 ${c.name} (${c.phone})`).join('\n');
+                alert(`✿ Alert Sent! ✿\n\n${contactList}\n\n[!] police notified\n[x] location shared\n\nstay safe! <3`);
+            }
+        }
+
+        function showLocationInfo() {
+            alert('📍 Location Services\n\n✿ GPS Status: ACTIVE ✿\n\n🌍 Your location is being tracked\n📡 Sharing with trusted contacts\n🔒 Encrypted & Secure\n\nstay safe! <3');
+        }
+
+        function showScreen(screen) {
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('contactsScreen').classList.add('hidden');
+            document.getElementById('settingsScreen').classList.add('hidden');
+            document.getElementById('feedbackScreen').classList.add('hidden');
+            document.getElementById(screen + 'Screen').classList.remove('hidden');
+            currentScreen = screen;
+        }
+
+        // Authentication functions
+        function toggleAuthForm() {
+            document.getElementById('loginForm').classList.toggle('hidden-form');
+            document.getElementById('signupForm').classList.toggle('hidden-form');
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('signupUsername').value = '';
+            document.getElementById('signupPassword').value = '';
+            document.getElementById('signupConfirm').value = '';
+        }
+
+        function handleAuthKeypress(event) {
+            if (event.key === 'Enter') {
+                if (!document.getElementById('loginForm').classList.contains('hidden-form')) {
+                    handleLogin();
+                } else {
+                    handleSignup();
+                }
+            }
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            if (!username || !password) {
+                alert('Error!\n\nPlease enter username and password ~');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('vesperUsers') || '{}');
+            if (!users[username]) {
+                alert('Account Not Found!\n\nCreate a new account first <3');
+                return;
+            }
+
+            if (users[username].password !== password) {
+                alert('Wrong Password!\n\nTry again ~');
+                return;
+            }
+
+            // Login successful
+            localStorage.setItem('vesperCurrentUser', username);
+            alert('Welcome back!\n\n' + username + ' <3');
+            showMainApp();
+        }
+
+        function handleSignup() {
+            const username = document.getElementById('signupUsername').value.trim();
+            const password = document.getElementById('signupPassword').value.trim();
+            const confirm = document.getElementById('signupConfirm').value.trim();
+
+            if (!username || !password || !confirm) {
+                alert('Error!\n\nPlease fill all fields ~');
+                return;
+            }
+
+            if (password !== confirm) {
+                alert('Passwords Don\'t Match!\n\nTry again ~');
+                return;
+            }
+
+            if (password.length < 4) {
+                alert('Password Too Short!\n\nMinimum 4 characters ~');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('vesperUsers') || '{}');
+            if (users[username]) {
+                alert('Username Taken!\n\nChoose another username <3');
+                return;
+            }
+
+            // Create account
+            users[username] = { password: password };
+            localStorage.setItem('vesperUsers', JSON.stringify(users));
+            localStorage.setItem('vesperCurrentUser', username);
+            alert('Account Created!\n\nWelcome to Vesper! <3');
+            showMainApp();
+        }
+
+        function showMainApp() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('homeScreen').classList.remove('hidden');
+            loadContacts();
+            loadReviews();
+            updateContactsList();
+        }
+
+        function checkLoginStatus() {
+            const currentUser = localStorage.getItem('vesperCurrentUser');
+            if (currentUser) {
+                showMainApp();
+            } else {
+                document.getElementById('loginScreen').classList.remove('hidden');
+                document.getElementById('homeScreen').classList.add('hidden');
+            }
+        }
+
+        // Check login status on page load
+        checkLoginStatus();
+    </script>
+</body>
+</html>
