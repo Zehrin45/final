@@ -1,8 +1,9 @@
-Perfect! I'll fill out the complete Tink-Her-Hack template for your Vesper project!
 
 Vesper 🌸
+
 Basic Details
 Team Name: Vertex
+
 Team Members
 
 Member 1: Fathima Zehrin - Ilahia College of Engineering and Technology
@@ -188,7 +189,7 @@ User Interface: Three screens (Home, Contacts, Settings) with smooth navigation
 
 Project Demo
 Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
+(https://drive.google.com/file/d/1TY3t3Xk_P5lYvdod9UKZrTmwv1TRTPW5/view?usp=sharing)
 Video demonstrates:
 
 Opening the web app and seeing the cute Stardew Valley aesthetic
