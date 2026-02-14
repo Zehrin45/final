@@ -190,7 +190,13 @@ Data Persistence: Browser LocalStorage API
 
 User Interface: Three screens (Home, Contacts, Settings) with smooth navigation
 
+#Additional Documentation
 
+For Web Projects with Backend:
+
+API Documentation
+
+Base URL: [https://api.yourproject.com](https://final-jade-zeta.vercel.app/)
 Project Demo
 Video
 (https://drive.google.com/file/d/1TY3t3Xk_P5lYvdod9UKZrTmwv1TRTPW5/view?usp=sharing)
@@ -215,5 +221,6 @@ Showcasing responsive design on different screen sizes
 # Team Contributions
 
 Project concept and vision, AI prompt engineering, design direction (Stardew Valley aesthetic), user experience design, testing and quality assurance, business strategy and market research, presentation development, complete documentation, deployment and hosting
+
 
 
