@@ -1,24 +1,25 @@
 
-Vesper 🌸
+ # Vesper 🌸
 
 Basic Details
-Team Name: Vertex
+# Team Name: Vertex
 
-Team Members
+# Team Members
 
-Member 1: Fathima Zehrin - Ilahia College of Engineering and Technology
+Member 1: Fathima Zehrin - Ilahia College of Engineering and Technology 
+
 Member 2: Mehrunisa Basheer - Ilahia College of Engineering and Technology
 
 
-Project Description:-
+# Project Description:-
 
-Vesper is a smart safety jewelry web application featuring a cute Stardew Valley-inspired interface. Women can manage emergency contacts, simulate charm connection, and test emergency alerts through an adorable pixel-art aesthetic with floating lilies and bunny decorations. One button press would alert all contacts and authorities with GPS location.
-The Problem statement
-Women face constant safety threats - 1 in 3 women worldwide experience violence, yet existing safety solutions are either bulky panic buttons or smartphone apps requiring multiple steps. Real cases like Sarah Everard (2021) and Gabby Petito (2021) highlight the urgent need for instant, discreet emergency communication that women will actually wear daily.
-The Solution
-Vesper provides a web demo of fashionable safety jewelry with hidden emergency buttons. The app allows users to manage up to 5 emergency contacts through an intuitive interface. In production, one charm button press would instantly alert all contacts via call/SMS, notify police with GPS coordinates, and start optional recording - all within 3 seconds. This demo showcases the user experience with a friendly, pixel-art aesthetic that makes safety technology feel approachable rather than alarming.
+*Vesper is a smart safety jewelry web application featuring a cute Stardew Valley-inspired interface. Women can manage emergency contacts, simulate charm connection, and test emergency alerts through an adorable pixel-art aesthetic with floating lilies and bunny decorations. One button press would alert all contacts and authorities with GPS location.*
+# The Problem statement
+*Women face constant safety threats - 1 in 3 women worldwide experience violence, yet existing safety solutions are either bulky panic buttons or smartphone apps requiring multiple steps. Real cases like Sarah Everard (2021) and Gabby Petito (2021) highlight the urgent need for instant, discreet emergency communication that women will actually wear daily.*
+# The Solution
+*Vesper provides a web demo of fashionable safety jewelry with hidden emergency buttons. The app allows users to manage up to 5 emergency contacts through an intuitive interface. In production, one charm button press would instantly alert all contacts via call/SMS, notify police with GPS coordinates, and start optional recording - all within 3 seconds. This demo showcases the user experience with a friendly, pixel-art aesthetic that makes safety technology feel approachable rather than alarming.*
 
-Technical Details
+# Technical Details
 Technologies/Components Used
 For Software:
 Languages used:
@@ -33,8 +34,8 @@ None (Vanilla JavaScript for lightweight performance)
 
 Libraries used:
 
-Google Fonts API (DotGothic16, Quicksand fonts)
-LocalStorage API (Browser-native data persistence)
+Google Fonts API 
+LocalStorage API 
 
 Tools used:
 
@@ -44,16 +45,16 @@ Git & GitHub
 Browser APIs
 
 
-Implementation
-For Software:
+# Implementation
+# For Software:
 Installation
 bash# No installation required - it's a web app!
-# Simply download the HTML file or visit the hosted URL
+ Simply download the HTML file or visit the hosted URL
 
-# Using VS Code Live Server extension
-# Right-click HTML file → "Open with Live Server"
+Using VS Code Live Server extension
+ Right-click HTML file → "Open with Live Server"
 Run
-# Double-click the HTML file - opens in your default browser
+ Double-click the HTML file - opens in your default browser
 
 
 ## Project Documentation
@@ -178,18 +179,22 @@ Run
 │  stay safe! <3           │
 └──────────────────────────┘
 Caption: This diagram shows the complete user flow from opening the app through emergency activation. The app uses vanilla JavaScript for state management and LocalStorage for data persistence. Users can toggle connection status, manage up to 5 emergency contacts, and simulate emergency alerts. All data is stored locally in the browser, making this a fully functional offline-capable demo of the Vesper safety jewelry concept.
-
+```
 Key Components:
 
 Presentation Layer: Single HTML file with embedded CSS/JS
+
 State Management: JavaScript variables
+
 Data Persistence: Browser LocalStorage API
+
 User Interface: Three screens (Home, Contacts, Settings) with smooth navigation
 
 
 Project Demo
 Video
 (https://drive.google.com/file/d/1TY3t3Xk_P5lYvdod9UKZrTmwv1TRTPW5/view?usp=sharing)
+
 Video demonstrates:
 
 Opening the web app and seeing the cute Stardew Valley aesthetic
@@ -206,3 +211,9 @@ Success message showing all alerted contacts and police notification
 Exploring Settings screen with various options
 Demonstrating that contacts persist after page refresh (LocalStorage)
 Showcasing responsive design on different screen sizes
+
+# Team Contributions
+
+Project concept and vision, AI prompt engineering, design direction (Stardew Valley aesthetic), user experience design, testing and quality assurance, business strategy and market research, presentation development, complete documentation, deployment and hosting
+
+
