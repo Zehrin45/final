@@ -190,17 +190,17 @@ Data Persistence: Browser LocalStorage API
 
 User Interface: Three screens (Home, Contacts, Settings) with smooth navigation
 
-#Additional Documentation
+# Additional Documentation
 
 For Web Projects with Backend:
 
-API Documentation
+*API Documentation*
 
 Base URL: [https://api.yourproject.com](https://final-jade-zeta.vercel.app/)
 
 
-Project Demo
-Video
+*Project Demo
+Video*
 (https://drive.google.com/file/d/1TY3t3Xk_P5lYvdod9UKZrTmwv1TRTPW5/view?usp=sharing)
 
 Video demonstrates:
