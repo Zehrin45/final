@@ -1182,8 +1182,8 @@
     <div class="phone-frame">
         <div class="pixel-border-top"></div>
         <div class="screen">
-            <!-- LOGIN SCREEN -->
-            <div id="loginScreen">
+            <!-- LOGIN SCREEN (Disabled for Vercel) -->
+            <div id="loginScreen" class="hidden" style="display: none !important;">
                 <div class="auth-container">
                     <div class="auth-card">
                         <div style="display: flex; justify-content: center; margin-bottom: 15px;">
@@ -1246,7 +1246,7 @@
 
             <!-- HOME SCREEN -->
             <div id="homeScreen">
-                <button class="logout-button" onclick="handleLogout()">log out</button>
+                <!-- Logout button removed for Vercel deployment -->
                 <div class="header">
                     <div class="bunny-decoration">🐰</div>
                     <div class="lily-divider">🌷 🌸 🌷</div>
@@ -1279,6 +1279,11 @@
                     <div class="tagline">&lt;3 your guardian angel &lt;3</div>
                     <div class="lily-divider">🌸 🌷 🌸</div>
                     <div class="bunny-decoration">🐰</div>
+                </div>
+
+                <!-- Demo Notice -->
+                <div style="background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%); padding: 12px; border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(255, 193, 7, 0.3); text-align: center; font-size: 11px; color: #8b5d5a; box-shadow: 0 8px 20px rgba(255, 193, 7, 0.15);">
+                    <strong>📝 Demo Mode:</strong> Data saves to your browser but resets on page refresh! <3
                 </div>
 
                 <div class="status-card">
@@ -1757,7 +1762,7 @@
         }
 
         function showMainApp() {
-            document.getElementById('loginScreen').classList.add('hidden');
+            // Simplified for Vercel - login screen already hidden
             document.getElementById('homeScreen').classList.remove('hidden');
             loadContacts();
             loadReviews();
@@ -1765,27 +1770,13 @@
         }
 
         function handleLogout() {
-            if (confirm('Are you sure you want to log out?\n\nCome back soon! <3')) {
-                localStorage.removeItem('vesperCurrentUser');
-                document.getElementById('homeScreen').classList.add('hidden');
-                document.getElementById('contactsScreen').classList.add('hidden');
-                document.getElementById('settingsScreen').classList.add('hidden');
-                document.getElementById('feedbackScreen').classList.add('hidden');
-                document.getElementById('loginScreen').classList.remove('hidden');
-                document.getElementById('loginUsername').value = '';
-                document.getElementById('loginPassword').value = '';
-                alert('See you soon! 💫\n\nLogged out successfully! <3');
-            }
+            // Logout disabled for Vercel deployment
+            alert('Logout feature disabled in this version.\n\nData resets on page refresh! <3');
         }
 
         function checkLoginStatus() {
-            const currentUser = localStorage.getItem('vesperCurrentUser');
-            if (currentUser) {
-                showMainApp();
-            } else {
-                document.getElementById('loginScreen').classList.remove('hidden');
-                document.getElementById('homeScreen').classList.add('hidden');
-            }
+            // Auto-login for Vercel deployment - no authentication required
+            showMainApp();
         }
 
         // Check login status on page load
