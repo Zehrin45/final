@@ -60,7 +60,7 @@ Run
 ## Project Documentation
 ### For Software:
 
-#### Screenshots (Add at least 3)
+#### Screenshots
 ![Screenshot1]
 <img width="548" height="412" alt="image" src="https://github.com/user-attachments/assets/08f0ba75-a625-4bd7-982c-ec6e9c496ff2" />
 
